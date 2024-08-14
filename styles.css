@@ -1,0 +1,151 @@
+/* General Styles */
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* Hide scrollbars */
+}
+
+/* Navbar Styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px; /* Adjust height as needed */
+    padding: 0 20px;
+    background: transparent;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Optional for subtle shadow */
+    z-index: 1000; /* Ensure the navbar is above other content */
+    transition: transform 0.3s ease;
+    transform: translateY(-100%); /* Start hidden off-screen */
+}
+
+.navbar.active {
+    transform: translateY(0); /* Slide into view */
+}
+
+.logo {
+    height: 40px; /* Adjust logo size */
+}
+
+.navbar-menu {
+    display: flex;
+    gap: 20px; /* Space between menu items */
+}
+
+.navbar-menu a, .signup-btn {
+    color: white;
+    text-decoration: none;
+    font-size: 16px; /* Adjust font size */
+}
+
+.signup-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Navbar Toggle Button */
+.nav-toggle {
+    display: none; /* Hide toggle button by default */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px; /* Adjust size as needed */
+    cursor: pointer;
+}
+
+/* Splide Styles */
+.splide {
+    height: 100vh; /* Full viewport height */
+    width: 100vw;  /* Full viewport width */
+    position: relative; /* For absolute positioning of buttons */
+}
+
+.splide__slide {
+    display: flex;
+    justify-content: space-between; /* Space between text content and image */
+    align-items: center;            /* Center vertically */
+    height: 100%;
+    width: 100%;
+    padding: 20px; /* Add padding for spacing */
+    box-sizing: border-box; /* Include padding in width/height calculations */
+    position: relative; /* For absolute positioning of text content */
+}
+
+.splide__slide img {
+    height: 60%; /* Adjust the height to a smaller percentage */
+    width: auto;
+    max-width: 50%; /* Limit the width to a smaller percentage */
+    object-fit: cover;
+}
+
+.text-content {
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 50%; /* Adjust to fit content */
+    width: auto; /* Adjust width to fit content */
+    box-sizing: border-box; /* Include padding in width calculations */
+}
+
+.text-content h2, .text-content h3, .text-content p {
+    margin: 0 0 10px; /* Add margin for spacing */
+}
+
+.splide__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.splide__arrow--prev {
+    left: 20px;
+}
+
+.splide__arrow--next {
+    right: 20px;
+}
+
+/* Media Query for Mobile View */
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none; /* Hide menu on mobile */
+    }
+
+    .nav-toggle {
+        display: block; /* Show toggle button on mobile */
+    }
+
+    .navbar.active .navbar-menu {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 60px; /* Adjust based on navbar height */
+        right: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9); /* Dark background for mobile menu */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .navbar-menu a, .signup-btn {
+        padding: 15px;
+        font-size: 18px; /* Adjust font size for mobile */
+    }
+}

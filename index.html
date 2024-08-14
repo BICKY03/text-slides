@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Watch Carousel</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
+    <style>
+        /* Additional custom styles */
+        #carousel {
+            transition: background-color 0.5s ease;
+            padding-left: 350px; /* Padding left */
+            padding-bottom: 200px; /* Padding bottom */
+        }
+
+        .splide__slide {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 200px; /* Add padding to the sides of each slide */
+        }
+
+        .splide__arrow {
+            background: none;
+            color: white;
+            border: 2px solid white;
+            border-radius: 50%;
+            padding: 10px;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .splide__arrow svg {
+            fill: white;
+            width: 24px;
+            height: 24px;
+        }
+
+        /* Gradient background */
+        body {
+            transition: background 0.5s ease;
+        }
+
+        /* Sidebar styles */
+        #sidebar {
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+
+        #sidebar.active {
+            transform: translateX(0);
+        }
+
+        /* Header image styling */
+        .header-logo img {
+            max-height: 50px; /* Adjust size as needed */
+        }
+
+        /* Padding for social media icons */
+        .social-icons {
+            padding-left: 20px; /* Adjust as needed */
+        }
+
+        /* Carousel text styles */
+        #carousel-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem; /* Adjust font size as needed */
+            color: #fff;
+            font-weight: bold;
+        }
+
+        #carousel-subtext {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.25rem; /* Adjust font size as needed */
+            color: #fff;
+            font-weight: 600;
+        }
+
+        #carousel-description {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem; /* Adjust font size as needed */
+            color: #1C1415CC; /* Updated text color */
+        }
+
+        #carousel-price {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.5rem; /* Adjust font size as needed */
+            color: #fff;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50">
+
+    <!-- Header -->
+    <header id="header" class="flex justify-between items-center p-6 lg:px-28 px-6 bg-white shadow-md">
+        <div class="header-logo">
+            <img src="img/logo.png" alt="KING Logo"> <!-- Replace this with your logo image -->
+        </div>
+        <nav class="hidden lg:flex space-x-4 lg:space-x-8 gap-4 lg:gap-10 font-semibold">
+            <a href="#" class="text-sm lg:text-lg">Shop</a>
+            <a href="#" class="text-sm lg:text-lg">Brands</a>
+            <a href="#" class="text-sm lg:text-lg">Contact us</a>
+            <button class="bg-black text-white px-4 py-2 rounded-lg text-sm lg:text-base">Sign up</button>
+        </nav>
+        <div class="lg:hidden flex items-center">
+            <button id="hamburger" class="focus:outline-none">
+                <svg class="w-8 h-8 text-black" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-full bg-white shadow-lg z-50 lg:hidden flex flex-col space-y-6 p-6">
+        <a href="#" class="text-lg font-semibold">Shop</a>
+        <a href="#" class="text-lg font-semibold">Brands</a>
+        <a href="#" class="text-lg font-semibold">Contact us</a>
+        <button class="bg-black text-white px-4 py-2 rounded-lg text-lg">Sign up</button>
+    </aside>
+
+    <!-- Carousel Section -->
+    <section id="carousel" class="flex flex-col lg:flex-row items-center justify-between p-6 lg:p-10 space-y-6 lg:space-y-0">
+        <div class="flex flex-col space-y-4 text-center lg:text-left">
+            <h1 class="text-2xl lg:text-4xl font-bold text-white" id="carousel-title">Refined Timepieces</h1>
+            <h2 class="text-xl lg:text-2xl font-semibold text-white" id="carousel-subtext">Choose Luxury, Choose Us</h2>
+            <p class="text-sm lg:text-lg lg:w-1/2 mx-auto lg:mx-0" id="carousel-description">Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece</p>
+            <span class="text-xl lg:text-3xl font-bold text-white" id="carousel-price">$599.00</span>
+
+            <!-- Social Media Icons -->
+            <div class="social-icons hidden md:flex md:justify-center lg:justify-start space-x-4 mt-4">
+                <a href="#" class="social-icon flex items-center justify-center w-8 h-8 rounded-full border border-gray-300 p-2">
+                    <img src="./img/Vector.png" alt="Facebook Icon" class="w-full h-full object-contain">
+                </a>
+                <a href="#" class="social-icon flex items-center justify-center w-8 h-8 rounded-full border border-gray-300 p-2">
+                    <img src="./img/twitter.png" alt="Twitter Icon" class="w-full h-full object-contain">
+                </a>
+                <a href="#" class="social-icon flex items-center justify-center w-8 h-8 rounded-full border border-gray-300 p-2">
+                    <img src="./img/youtube.png" alt="YouTube Icon" class="w-full h-full object-contain">
+                </a>
+            </div>
+        </div>
+        <div class="splide w-full lg:w-1/2" id="splide-carousel">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <!-- Images will be dynamically injected here -->
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var data = [
+                {
+                    "text": "Exquisite Watches",
+                    "subText": "Gold Luxury, Choose Us",
+                    "description": "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
+                    "price": "$499.00",
+                    "image": "img/Group 4.png",
+                    "ambientColor": "#f4aa69",
+                    "ambientColor1": "#fedabb",
+                },
+                {
+                    "text": "Dainty Timepieces",
+                    "subText": "Silver Luxury, Choose Us",
+                    "description": "Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece",
+                    "price": "$469.00",
+                    "image": "img/Group 5.png",
+                    "ambientColor": "#b2b4b4",
+                    "ambientColor1": "#e1e1e1",
+                },
+                {
+                    "text": "Elegant Timepieces",
+                    "subText": "Choose Luxury, Choose Us",
+                    "description": "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
+                    "price": "$529.00",
+                    "image": "img/Group 6.png",
+                    "ambientColor": "#39ab60",
+                    "ambientColor1": "#65d48b",
+                },
+                {
+                    "text": "Refined Timepieces",
+                    "subText": "Choose Luxury, Choose Us",
+                    "description": "Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece",
+                    "price": "$599.00",
+                    "image": "img/Group 7.png",
+                    "ambientColor": "#f45b59",
+                    "ambientColor1": "#fe9e8d",
+                }
+                // Add more slides as needed...
+            ];
+
+            // Dynamically create the slides
+            var splideList = document.querySelector('.splide__list');
+            data.forEach((item, index) => {
+                var li = document.createElement('li');
+                li.classList.add('splide__slide');
+
+                var img = document.createElement('img');
+                img.src = item.image;
+                img.alt = `Watch ${index + 1}`;
+
+                li.appendChild(img);
+                splideList.appendChild(li);
+            });
+
+            // Initialize Splide
+            var splide = new Splide('#splide-carousel', {
+                type: 'loop',
+                perPage: 1,
+                pagination: false,
+                arrows: true
+            }).mount();
+
+            // Set initial values
+            function updateContent(index) {
+                var item = data[index];
+                document.getElementById('carousel-title').textContent = item.text;
+                document.getElementById('carousel-subtext').textContent = item.subText;
+                document.getElementById('carousel-description').textContent = item.description;
+                document.getElementById('carousel-price').textContent = item.price;
+                document.getElementById('carousel').style.background = `linear-gradient(to right, ${item.ambientColor}, ${item.ambientColor1})`;
+                document.getElementById('header').style.background = `linear-gradient(to right, ${item.ambientColor}, ${item.ambientColor1})`;
+            }
+
+            // Initial content setup
+            updateContent(0);
+
+            // Update content on slide move
+            splide.on('move', function (newIndex) {
+                updateContent(newIndex);
+            });
+        });
+    </script>
+</body>
+
+</html>
+
