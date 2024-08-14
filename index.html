@@ -8,12 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/css/splide.min.css">
     <style>
-     
         .splide__slide {
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 0 200px;
+            padding: 0 20px; /* Responsive padding */
         }
 
         .splide__arrow {
@@ -21,9 +20,9 @@
             color: white;
             border: 2px solid white;
             border-radius: 50%;
-            padding: 10px;
-            width: 45px;
-            height: 45px;
+            padding: 8px;
+            width: 36px;
+            height: 36px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -31,8 +30,8 @@
 
         .splide__arrow svg {
             fill: white;
-            width: 24px;
-            height: 24px;
+            width: 20px;
+            height: 20px;
         }
 
         body {
@@ -49,58 +48,151 @@
         }
 
         .header-logo img {
-            max-height: 50px;
+            max-height: 40px;
         }
 
-        .social-icons {
-            padding-left: 20px;
+        #header {
+            padding-left: 20px; /* Adjust padding for responsiveness */
+        }
+
+        #carousel {
+            transition: background-color 0.5s ease;
+            padding-left: 20px; /* Adjust padding for responsiveness */
+            padding-bottom: 20px;
+        }
+
+        #carousel-title,
+        #carousel-subtext,
+        #carousel-description,
+        #carousel-price {
+            padding-left: 20px; /* Adjust padding for responsiveness */
         }
 
         #carousel-title {
             font-family: 'Poppins', sans-serif;
-            font-size: 2rem;
+            font-size: 1.25rem;
             color: #fff;
             font-weight: bold;
         }
 
         #carousel-subtext {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.25rem;
+            font-size: 1rem;
             color: #fff;
             font-weight: 600;
         }
 
         #carousel-description {
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-size: 0.875rem;
             color: #1C1415CC;
         }
 
         #carousel-price {
             font-family: 'Poppins', sans-serif;
-            font-size: 1.5rem;
+            font-size: 1.25rem;
             color: #fff;
             font-weight: bold;
         }
-        #carousel {
-            transition: background-color 0.5s ease;
-            padding-left: 350px;
-            padding-bottom: 200px;
+
+        .social-icons {
+            padding-left: 20px; /* Adjust padding for responsiveness */
         }
 
+        @media (min-width: 768px) {
+            #carousel-title {
+                font-size: 1.5rem;
+            }
+
+            #carousel-subtext {
+                font-size: 1.25rem;
+            }
+
+            #carousel-description {
+                font-size: 1rem;
+            }
+
+            #carousel-price {
+                font-size: 1.5rem;
+            }
+
+            .splide__slide {
+                padding: 0 50px; /* Adjust padding for larger screens */
+            }
+
+            #header {
+                padding-left: 40px;
+            }
+
+            #carousel {
+                padding-left: 40px;
+            }
+
+            #carousel-title,
+            #carousel-subtext,
+            #carousel-description,
+            #carousel-price {
+                padding-left: 40px;
+            }
+
+            .social-icons {
+                padding-left: 40px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            #carousel-title {
+                font-size: 2rem;
+            }
+
+            #carousel-subtext {
+                font-size: 1.5rem;
+            }
+
+            #carousel-description {
+                font-size: 1.125rem;
+            }
+
+            #carousel-price {
+                font-size: 1.75rem;
+            }
+
+            .splide__slide {
+                padding: 0 100px; /* Adjust padding for larger screens */
+            }
+
+            #header {
+                padding-left: 80px;
+            }
+
+            #carousel {
+                padding-left: 80px;
+            }
+
+            #carousel-title,
+            #carousel-subtext,
+            #carousel-description,
+            #carousel-price {
+                padding-left: 80px;
+            }
+
+            .social-icons {
+                padding-left: 80px;
+            }
+        }
     </style>
 </head>
 
 <body class="bg-gray-50">
 
-    <header id="header" class="flex justify-between items-center p-6 lg:px-28 px-6 bg-white shadow-md">
+    <header id="header" class="flex justify-between items-center p-4 lg:p-6 bg-white shadow-md">
         <div class="header-logo">
             <img src="img/Logo.png" alt="KING Logo">
         </div>
         <nav class="hidden lg:flex space-x-4 lg:space-x-8 gap-4 lg:gap-10 font-semibold">
-            <a href="#" class="text-sm lg:text-lg">Shop</a>
-            <a href="#" class="text-sm lg:text-lg">Brands</a>
-            <a href="#" class="text-sm lg:text-lg">Contact us</a>
+            <a href="#" class="text-sm lg:text-base">Shop</a>
+            <a href="#" class="text-sm lg:text-base">Brands</a>
+            <a href="#" class="text-sm lg:text-base">Contact us</a>
             <button class="bg-black text-white px-4 py-2 rounded-lg text-sm lg:text-base">Sign up</button>
         </nav>
         <div class="lg:hidden flex items-center">
@@ -121,12 +213,12 @@
         <button class="bg-black text-white px-4 py-2 rounded-lg text-lg">Sign up</button>
     </aside>
 
-    <section id="carousel" class="flex flex-col lg:flex-row items-center justify-between p-6 lg:p-10 space-y-6 lg:space-y-0">
+    <section id="carousel" class="flex flex-col lg:flex-row items-center justify-between p-4 lg:p-6 space-y-6 lg:space-y-0">
         <div class="flex flex-col space-y-4 text-center lg:text-left">
-            <h1 class="text-2xl lg:text-4xl font-bold text-white" id="carousel-title">Refined Timepieces</h1>
-            <h2 class="text-xl lg:text-2xl font-semibold text-white" id="carousel-subtext">Choose Luxury, Choose Us</h2>
-            <p class="text-sm lg:text-lg lg:w-1/2 mx-auto lg:mx-0" id="carousel-description">Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece</p>
-            <span class="text-xl lg:text-3xl font-bold text-white" id="carousel-price">$599.00</span>
+            <h1 class="text-xl lg:text-3xl font-bold text-white" id="carousel-title">Refined Timepieces</h1>
+            <h2 class="text-lg lg:text-xl font-semibold text-white" id="carousel-subtext">Choose Luxury, Choose Us</h2>
+            <p class="text-sm lg:text-base lg:w-1/2 mx-auto lg:mx-0" id="carousel-description">Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece</p>
+            <span class="text-lg lg:text-2xl font-bold text-white" id="carousel-price">$599.00</span>
 
             <div class="social-icons hidden md:flex md:justify-center lg:justify-start space-x-4 mt-4">
                 <a href="#" class="social-icon flex items-center justify-center w-8 h-8 rounded-full border border-gray-300 p-2">
@@ -150,10 +242,9 @@
 
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.6.12/dist/js/splide.min.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    <script src="script.js">
-       
-    </script>
+    <script src="script.js"></script>
 </body>
 
 </html>
+
 
