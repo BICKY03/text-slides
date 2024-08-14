@@ -1,68 +1,76 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Navbar Toggle Functionality
-    const navToggle = document.querySelector('.nav-toggle');
-    const navbar = document.querySelector('.navbar');
-
-    navToggle.addEventListener('click', function () {
-        navbar.classList.toggle('active');
-    });
-
-    // Product Data
-    const products = [
+    var data = [
         {
-            title1: "Exquisite Watches Gold Luxury",
-            title2: "Choose Us",
-            description: "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
-            price: "$499.00",
-            imageFileName: "img/Group 4.png",
-            background: "linear-gradient(105.54deg, #F4A764 -2.93%, #FFDEC2 72.14%)"
+            "text": "Exquisite Watches",
+            "subText": "Gold Luxury, Choose Us",
+            "description": "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
+            "price": "$499.00",
+            "image": "img/Group 4.png",
+            "ambientColor": "#f4aa69",
+            "ambientColor1": "#fedabb",
         },
         {
-            title1: "Dainty Timepieces",
-            title2: "Silver Luxury, Choose Us",
-            description: "Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece",
-            price: "$469.00",
-            imageFileName: "img/Group 5.png",
-            background: "linear-gradient(105.54deg, #ADB0B0 -2.93%, #E1E1E1 72.14%)"
+            "text": "Dainty Timepieces",
+            "subText": "Silver Luxury, Choose Us",
+            "description": "Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece",
+            "price": "$469.00",
+            "image": "img/Group 5.png",
+            "ambientColor": "#b2b4b4",
+            "ambientColor1": "#e1e1e1",
         },
         {
-            title1: "Elegant Timepieces",
-            title2: "Choose Luxury, Choose Us",
-            description: "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
-            price: "$529.00",
-            imageFileName: "img/Group 6.png",
-            background: "linear-gradient(105.54deg, #30A357 -2.93%, #75E39A 72.14%)"
+            "text": "Elegant Timepieces",
+            "subText": "Choose Luxury, Choose Us",
+            "description": "Discover the Perfect Watch for Every Occasion and Elevate Your Style with Timeless Elegance and Precision Craftsmanship - watch",
+            "price": "$529.00",
+            "image": "img/Group 6.png",
+            "ambientColor": "#39ab60",
+            "ambientColor1": "#65d48b",
         },
         {
-            title1: "Refined Timepieces",
-            title2: "Choose Luxury, Choose Us",
-            description: "Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece",
-            price: "$529.00",
-            imageFileName: "img/Group 7.png",
-            background: "linear-gradient(105.54deg, #F24F4F -2.93%, #FFA895 72.14%)"
+            "text": "Refined Timepieces",
+            "subText": "Choose Luxury, Choose Us",
+            "description": "Explore the Ideal Timepiece for Any Moment and Enhance Your Style with Timeless Sophistication and Impeccable Craftsmanship - timepiece",
+            "price": "$599.00",
+            "image": "img/Group 7.png",
+            "ambientColor": "#f45b59",
+            "ambientColor1": "#fe9e8d",
         }
     ];
 
-    // Initialize Splide Slider
-    const splideList = document.querySelector('.splide__list');
+    var splideList = document.querySelector('.splide__list');
+    data.forEach((item, index) => {
+        var li = document.createElement('li');
+        li.classList.add('splide__slide');
 
-    products.forEach(product => {
-        const slide = document.createElement('li');
-        slide.classList.add('splide__slide');
-        slide.style.background = product.background;
+        var img = document.createElement('img');
+        img.src = item.image;
+        img.alt = `Watch ${index + 1}`;
 
-        slide.innerHTML = `
-            <div class="text-content">
-                <h2>${product.title1}</h2>
-                <h3>${product.title2}</h3>
-                <p>${product.description}</p>
-                <p>${product.price}</p>
-            </div>
-            <img src="${product.imageFileName}" alt="${product.title1}">
-        `;
-
-        splideList.appendChild(slide);
+        li.appendChild(img);
+        splideList.appendChild(li);
     });
 
-    new Splide('#splide').mount();
+    var splide = new Splide('#splide-carousel', {
+        type: 'loop',
+        perPage: 1,
+        pagination: false,
+        arrows: true
+    }).mount();
+
+    function updateContent(index) {
+        var item = data[index];
+        document.getElementById('carousel-title').textContent = item.text;
+        document.getElementById('carousel-subtext').textContent = item.subText;
+        document.getElementById('carousel-description').textContent = item.description;
+        document.getElementById('carousel-price').textContent = item.price;
+        document.getElementById('carousel').style.background = `linear-gradient(to right, ${item.ambientColor}, ${item.ambientColor1})`;
+        document.getElementById('header').style.background = `linear-gradient(to right, ${item.ambientColor}, ${item.ambientColor1})`;
+    }
+
+    updateContent(0);
+
+    splide.on('move', function (newIndex) {
+        updateContent(newIndex);
+    });
 });
